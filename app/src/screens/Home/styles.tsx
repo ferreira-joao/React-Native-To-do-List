@@ -1,13 +1,11 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    color: "#FFF",
-  },
-});
+export const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Title = styled.Text`
+  color: #fff;
+`;
