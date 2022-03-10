@@ -6,4 +6,9 @@ export default {
     secondary: "#7299ED",
     dark: "#35476E",
   },
+  fonts: {
+    regular: "Quicksand-Regular",
+    medium: "Quicksand-Medium",
+    bold: "Quicksand-Bold",
+  },
 };
