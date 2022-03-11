@@ -1,13 +1,19 @@
 import React from "react";
 import { MainInput } from "../../components/MainInput";
+import { AddButton } from "../../components/AddButton";
 
-import { Container, Title } from "./styles";
+import { Container, Title, FormContainer } from "./styles";
 
 function Home() {
   return (
     <Container>
       <Title>To do List</Title>
-      <MainInput placeholder="Digite aqui..." />
+
+      <FormContainer>
+        <MainInput placeholder="Digite aqui..." />
+
+        <AddButton />
+      </FormContainer>
     </Container>
   );
 }
