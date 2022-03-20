@@ -6,7 +6,7 @@ import { ButtonContainer } from "./styles";
 export function AddButton() {
   return (
     <ButtonContainer>
-      <Icon name="add-circle-outline" size={20} color="#FFF" />
+      <Icon name="add-outline" size={40} color="#FFF" />
     </ButtonContainer>
   );
 }

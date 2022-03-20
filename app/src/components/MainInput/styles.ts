@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import theme from "../../global/theme";
 
 export const InputContainer = styled.TextInput`
-  width: 100%;
+  flex: 1;
   border-radius: 8px;
   padding-left: 10px;
   background-color: #fff;
