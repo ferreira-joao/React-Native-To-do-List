@@ -19,7 +19,7 @@ function Home() {
       <Title>To do List</Title>
 
       <FormContainer>
-        <MainInput placeholder="Digite aqui..." />
+        <MainInput placeholder="Type here..." />
 
         <AddButton />
       </FormContainer>
