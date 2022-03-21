@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { MainInput } from "../../components/MainInput";
 import { AddButton } from "../../components/AddButton";
+import { MainCard } from "../../components/MainCard";
 
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 
 import theme from "../../global/theme";
 
-import { Container, Title, FormContainer } from "./styles";
+import { Container, Title, FormContainer, CardList } from "./styles";
 
 function Home() {
   const segmentValues = ["All", "Complete", "Incomplete"];
@@ -35,6 +36,14 @@ function Home() {
         tintColor={theme.colors.primary}
         backgroundColor={theme.colors.dark}
       />
+
+      <CardList>
+        <MainCard />
+        <MainCard />
+        <MainCard />
+        <MainCard />
+        <MainCard />
+      </CardList>
     </Container>
   );
 }

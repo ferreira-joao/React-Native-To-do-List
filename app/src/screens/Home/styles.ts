@@ -20,3 +20,8 @@ export const FormContainer = styled.View`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const CardList = styled.View`
+  width: 100%;
+  margin-top: 10px;
+`;
