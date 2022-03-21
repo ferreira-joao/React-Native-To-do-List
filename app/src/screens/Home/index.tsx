@@ -9,6 +9,8 @@ import theme from "../../global/theme";
 
 import { Container, Title, FormContainer, CardList } from "./styles";
 
+import { list } from "./data";
+
 function Home() {
   const segmentValues = ["All", "Complete", "Incomplete"];
 
@@ -38,11 +40,9 @@ function Home() {
       />
 
       <CardList>
-        <MainCard />
-        <MainCard />
-        <MainCard />
-        <MainCard />
-        <MainCard />
+        {list.map((item) => (
+          <MainCard key={item.id} text={item.text} />
+        ))}
       </CardList>
     </Container>
   );

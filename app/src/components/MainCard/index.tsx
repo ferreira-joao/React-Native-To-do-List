@@ -2,10 +2,14 @@ import React from "react";
 
 import { CardContainer, CardText } from "./styles";
 
-export function MainCard() {
+interface ICardText {
+  text: string;
+}
+
+export function MainCard({ text }: ICardText) {
   return (
     <CardContainer>
-      <CardText>Olaaaaaaaaa</CardText>
+      <CardText>{text}</CardText>
     </CardContainer>
   );
 }
