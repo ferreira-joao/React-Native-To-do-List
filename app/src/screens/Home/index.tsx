@@ -9,14 +9,14 @@ import theme from "../../global/theme";
 
 import { Container, Title, FormContainer, CardList } from "./styles";
 
-import { list } from "./data";
-
 function Home() {
   const segmentValues = ["All", "Done", "Incomplete"];
 
   const [segmentedIndex, setSegmentedIndex] = useState(0);
-  const [mainList, setMainList] = useState(list);
+  const [mainList, setMainList] = useState([]);
   const [text, setText] = useState("");
+
+  let list = [];
 
   const handleSegmentedChange = (e: string) => {
     let segment_value = e.toLowerCase();
@@ -46,7 +46,13 @@ function Home() {
   };
 
   function handleAdd() {
-    console.log(text);
+    let new_item = {
+      id: Math.floor(Math.random() * 1000) + mainList.length,
+      text: text,
+      status: "incomplete",
+    };
+
+    list.push(new_item);
   }
 
   return (
