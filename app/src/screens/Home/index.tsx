@@ -16,6 +16,7 @@ function Home() {
 
   const [segmentedIndex, setSegmentedIndex] = useState(0);
   const [mainList, setMainList] = useState(list);
+  const [text, setText] = useState("");
 
   const handleSegmentedChange = (e: string) => {
     let segment_value = e.toLowerCase();
@@ -49,7 +50,11 @@ function Home() {
       <Title>To do List</Title>
 
       <FormContainer>
-        <MainInput placeholder="Type here..." />
+        <MainInput
+          placeholder="Type here..."
+          value={text}
+          onChange={(e) => setText(e.nativeEvent.text)}
+        />
 
         <AddButton />
       </FormContainer>
