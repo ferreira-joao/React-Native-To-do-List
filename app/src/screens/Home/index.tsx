@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MainInput } from "../../components/MainInput";
 import { AddButton } from "../../components/AddButton";
 import { MainCard } from "../../components/MainCard";
@@ -23,18 +23,24 @@ function Home() {
     switch (segment_value) {
       case "all":
         setMainList(list);
+
+        break;
       case "done":
-        const new_list1 = mainList.filter((item) =>
+        const new_list1 = list.filter((item) =>
           item.status.includes(segment_value)
         );
+
         setMainList(new_list1);
+
+        break;
       case "incomplete":
-        const new_list2 = mainList.filter((item) =>
+        const new_list2 = list.filter((item) =>
           item.status.includes(segment_value)
         );
+
         setMainList(new_list2);
-      default:
-        setMainList(list);
+
+        break;
     }
   };
 
