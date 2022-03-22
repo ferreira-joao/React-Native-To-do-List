@@ -45,6 +45,10 @@ function Home() {
     }
   };
 
+  function handleAdd() {
+    console.log(text);
+  }
+
   return (
     <Container>
       <Title>To do List</Title>
@@ -56,7 +60,7 @@ function Home() {
           onChange={(e) => setText(e.nativeEvent.text)}
         />
 
-        <AddButton />
+        <AddButton onPress={handleAdd} />
       </FormContainer>
 
       <SegmentedControl
