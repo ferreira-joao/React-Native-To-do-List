@@ -9,6 +9,7 @@ export const ButtonContainer = styled.TouchableOpacity<ICancel>`
   border-radius: 15px;
   width: 30px;
   height: 30px;
+  margin-left: 10px;
   justify-content: center;
   align-items: center;
   ${(props) =>
