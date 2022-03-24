@@ -16,9 +16,10 @@ interface IList {
 }
 
 function Home() {
-  const segmentValues = ["All", "Done", "Incomplete"];
+  const segmentValues = ["All", "Complete", "Incomplete"];
 
   const [segmentedIndex, setSegmentedIndex] = useState(0);
+  const [segmentedStatus, setSegmentedStatus] = useState("All");
   const [mainList, setMainList] = useState<IList[]>([]);
   const [text, setText] = useState("");
   const [filteredList, setFilteredList] = useState<IList[]>([]);
@@ -27,7 +28,7 @@ function Home() {
     let segment_value = e.toLowerCase();
 
     switch (segment_value) {
-      case "done":
+      case "complete":
         setFilteredList(mainList.filter((item) => item.completed === true));
 
         break;
