@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MainInput } from "../../components/MainInput";
 import { AddButton } from "../../components/AddButton";
 import { MainCard } from "../../components/MainCard";
@@ -19,18 +19,18 @@ function Home() {
   const segmentValues = ["All", "Complete", "Incomplete"];
 
   const [segmentedIndex, setSegmentedIndex] = useState(0);
-  const [segmentedStatus, setSegmentedStatus] = useState("All");
+  const [segmentedStatus, setSegmentedStatus] = useState("all");
   const [mainList, setMainList] = useState<IList[]>([]);
   const [text, setText] = useState("");
   const [filteredList, setFilteredList] = useState<IList[]>([]);
 
-  const handleSegmentedChange = (e: string) => {
-    let segment_value = e.toLowerCase();
+  const handleSegmentedChange = () => {
+    let segment_value = segmentedStatus;
 
     switch (segment_value) {
       case "complete":
         setFilteredList(mainList.filter((item) => item.completed === true));
-
+        console.log("oiii");
         break;
       case "incomplete":
         setFilteredList(mainList.filter((item) => item.completed === false));
@@ -52,6 +52,10 @@ function Home() {
     setText("");
   }
 
+  useEffect(() => {
+    handleSegmentedChange();
+  }, [segmentedStatus, mainList]);
+
   return (
     <Container>
       <Title>To do List</Title>
@@ -70,7 +74,7 @@ function Home() {
         values={segmentValues}
         selectedIndex={segmentedIndex}
         onChange={(e) => setSegmentedIndex(e.nativeEvent.selectedSegmentIndex)}
-        onValueChange={(e) => handleSegmentedChange(e)}
+        onValueChange={(e) => setSegmentedStatus(e.toLowerCase())}
         fontStyle={{ fontFamily: theme.fonts.regular }}
         activeFontStyle={{
           fontWeight: "normal",
