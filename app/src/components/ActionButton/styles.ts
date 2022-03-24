@@ -3,6 +3,7 @@ import theme from "../../global/theme";
 
 interface ICancel {
   isCancelable?: boolean;
+  leftSpace?: boolean;
 }
 
 export const ButtonContainer = styled.TouchableOpacity<ICancel>`
@@ -12,6 +13,14 @@ export const ButtonContainer = styled.TouchableOpacity<ICancel>`
   margin-left: 10px;
   justify-content: center;
   align-items: center;
+  ${(props) =>
+    props.leftSpace
+      ? css`
+          margin-left: 10px;
+        `
+      : css`
+          margin-left: 0;
+        `}
   ${(props) =>
     props.isCancelable
       ? css`

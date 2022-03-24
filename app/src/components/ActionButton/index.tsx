@@ -7,11 +7,21 @@ import { ButtonContainer } from "./styles";
 interface IActionButton extends TouchableOpacityProps {
   icon: string;
   isCancelable?: boolean;
+  leftSpace?: boolean;
 }
 
-export function ActionButton({ onPress, icon, isCancelable }: IActionButton) {
+export function ActionButton({
+  onPress,
+  icon,
+  isCancelable,
+  leftSpace,
+}: IActionButton) {
   return (
-    <ButtonContainer onPress={onPress} isCancelable={isCancelable}>
+    <ButtonContainer
+      onPress={onPress}
+      isCancelable={isCancelable}
+      leftSpace={leftSpace}
+    >
       <Icon name={icon} size={20} color="#FFF" />
     </ButtonContainer>
   );

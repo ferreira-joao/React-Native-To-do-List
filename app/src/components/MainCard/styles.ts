@@ -14,6 +14,8 @@ export const CardContainer = styled.View`
 `;
 
 export const CardText = styled.Text`
+  flex: 1;
+  flex-wrap: wrap;
   color: ${theme.colors.text};
 `;
 

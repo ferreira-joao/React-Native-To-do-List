@@ -15,7 +15,7 @@ export function MainCard({ text }: ICardText) {
       <ButtonsView>
         <ActionButton icon="checkmark-outline" />
 
-        <ActionButton icon="trash-outline" isCancelable />
+        <ActionButton icon="trash-outline" isCancelable leftSpace />
       </ButtonsView>
     </CardContainer>
   );
