@@ -25,12 +25,10 @@ function Home() {
   const [filteredList, setFilteredList] = useState<IList[]>([]);
 
   const handleSegmentedChange = () => {
-    let segment_value = segmentedStatus;
-
-    switch (segment_value) {
+    switch (segmentedStatus) {
       case "complete":
         setFilteredList(mainList.filter((item) => item.completed === true));
-        console.log("oiii");
+
         break;
       case "incomplete":
         setFilteredList(mainList.filter((item) => item.completed === false));
