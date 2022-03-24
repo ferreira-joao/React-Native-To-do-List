@@ -9,50 +9,46 @@ import theme from "../../global/theme";
 
 import { Container, Title, FormContainer, CardList } from "./styles";
 
+interface IList {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
 function Home() {
   const segmentValues = ["All", "Done", "Incomplete"];
 
   const [segmentedIndex, setSegmentedIndex] = useState(0);
-  const [mainList, setMainList] = useState([]);
+  const [mainList, setMainList] = useState<IList[]>([]);
   const [text, setText] = useState("");
-
-  let list = [];
+  const [filteredList, setFilteredList] = useState<IList[]>([]);
 
   const handleSegmentedChange = (e: string) => {
     let segment_value = e.toLowerCase();
 
     switch (segment_value) {
-      case "all":
-        setMainList(list);
-
-        break;
       case "done":
-        const new_list1 = list.filter((item) =>
-          item.status.includes(segment_value)
-        );
-
-        setMainList(new_list1);
+        setFilteredList(mainList.filter((item) => item.completed === true));
 
         break;
       case "incomplete":
-        const new_list2 = list.filter((item) =>
-          item.status.includes(segment_value)
-        );
+        setFilteredList(mainList.filter((item) => item.completed === false));
 
-        setMainList(new_list2);
+        break;
+      default:
+        setFilteredList(mainList);
 
         break;
     }
   };
 
   function handleAdd() {
-    let new_item = {
-      id: Math.floor(Math.random() * 1000) + mainList.length,
-      text: text,
-      status: "incomplete",
-    };
+    setMainList([
+      ...mainList,
+      { id: Math.random() * 1000, text: text, completed: false },
+    ]);
 
-    list.push(new_item);
+    setText("");
   }
 
   return (
@@ -84,7 +80,7 @@ function Home() {
       />
 
       <CardList>
-        {mainList.map((item) => (
+        {filteredList.map((item) => (
           <MainCard key={item.id} text={item.text} />
         ))}
       </CardList>
