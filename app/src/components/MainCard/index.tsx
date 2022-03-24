@@ -1,7 +1,7 @@
 import React from "react";
 import { ActionButton } from "../ActionButton";
 
-import { CardContainer, CardText } from "./styles";
+import { CardContainer, CardText, ButtonsView } from "./styles";
 
 interface ICardText {
   text: string;
@@ -10,11 +10,13 @@ interface ICardText {
 export function MainCard({ text }: ICardText) {
   return (
     <CardContainer>
-      <CardText>{text}</CardText>
+      <CardText numberOfLines={1}>{text}</CardText>
 
-      <ActionButton icon="checkmark-outline" />
+      <ButtonsView>
+        <ActionButton icon="checkmark-outline" />
 
-      <ActionButton icon="trash-outline" isCancelable />
+        <ActionButton icon="trash-outline" isCancelable />
+      </ButtonsView>
     </CardContainer>
   );
 }
