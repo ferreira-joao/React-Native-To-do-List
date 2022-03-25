@@ -8,6 +8,7 @@ import SegmentedControl from "@react-native-segmented-control/segmented-control"
 import theme from "../../global/theme";
 
 import { Container, Title, FormContainer, CardList } from "./styles";
+import { Alert } from "react-native";
 
 interface IList {
   id: number;
@@ -42,12 +43,16 @@ function Home() {
   };
 
   function handleAdd() {
-    setMainList([
-      ...mainList,
-      { id: Math.random() * 1000, text: text, completed: false },
-    ]);
+    if (text === "") {
+      Alert.alert("Insert a text before before adding.");
+    } else {
+      setMainList([
+        ...mainList,
+        { id: Math.random() * 1000, text: text, completed: false },
+      ]);
 
-    setText("");
+      setText("");
+    }
   }
 
   useEffect(() => {
