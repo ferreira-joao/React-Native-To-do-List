@@ -6,10 +6,11 @@ import { CardContainer, CardText, ButtonsView } from "./styles";
 interface ICardText {
   completed: boolean;
   text: string;
-  onAdd: () => void;
+  onComplete: () => void;
+  onDelete: () => void;
 }
 
-export function MainCard({ completed, text, onAdd }: ICardText) {
+export function MainCard({ completed, text, onComplete, onDelete }: ICardText) {
   return (
     <CardContainer>
       <CardText numberOfLines={1} completed={completed}>
@@ -17,9 +18,14 @@ export function MainCard({ completed, text, onAdd }: ICardText) {
       </CardText>
 
       <ButtonsView>
-        <ActionButton icon="checkmark-outline" onPress={onAdd} />
+        <ActionButton icon="checkmark-outline" onPress={onComplete} />
 
-        <ActionButton icon="trash-outline" isCancelable leftSpace />
+        <ActionButton
+          icon="trash-outline"
+          onPress={onDelete}
+          isCancelable
+          leftSpace
+        />
       </ButtonsView>
     </CardContainer>
   );

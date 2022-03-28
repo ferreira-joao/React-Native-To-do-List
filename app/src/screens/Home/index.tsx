@@ -73,6 +73,10 @@ function Home() {
     );
   }
 
+  function handleDelete({ id }: IId) {
+    setMainList(mainList.filter((item) => item.id !== id));
+  }
+
   useEffect(() => {
     handleSegmentedChange();
   }, [segmentedStatus, mainList]);
@@ -111,7 +115,8 @@ function Home() {
             key={item.id}
             completed={item.completed}
             text={item.text}
-            onAdd={() => handleComplete(item)}
+            onComplete={() => handleComplete(item)}
+            onDelete={() => handleDelete(item)}
           />
         ))}
       </CardList>
