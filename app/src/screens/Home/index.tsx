@@ -71,7 +71,6 @@ function Home() {
         return item;
       })
     );
-    console.log(id);
   }
 
   useEffect(() => {
@@ -111,7 +110,7 @@ function Home() {
           <MainCard
             key={item.id}
             text={item.text}
-            onAdd={() => handleComplete(item.id)}
+            onAdd={() => handleComplete(item)}
           />
         ))}
       </CardList>
