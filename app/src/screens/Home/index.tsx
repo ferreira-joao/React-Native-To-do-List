@@ -109,6 +109,7 @@ function Home() {
         {filteredList.map((item) => (
           <MainCard
             key={item.id}
+            completed={item.completed}
             text={item.text}
             onAdd={() => handleComplete(item)}
           />

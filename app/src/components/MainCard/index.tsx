@@ -4,14 +4,17 @@ import { ActionButton } from "../ActionButton";
 import { CardContainer, CardText, ButtonsView } from "./styles";
 
 interface ICardText {
+  completed: boolean;
   text: string;
   onAdd: () => void;
 }
 
-export function MainCard({ text, onAdd }: ICardText) {
+export function MainCard({ completed, text, onAdd }: ICardText) {
   return (
     <CardContainer>
-      <CardText numberOfLines={1}>{text}</CardText>
+      <CardText numberOfLines={1} completed={completed}>
+        {text}
+      </CardText>
 
       <ButtonsView>
         <ActionButton icon="checkmark-outline" onPress={onAdd} />

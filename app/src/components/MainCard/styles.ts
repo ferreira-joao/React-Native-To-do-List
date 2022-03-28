@@ -1,5 +1,9 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import theme from "../../global/theme";
+
+interface ICardText {
+  completed: boolean;
+}
 
 export const CardContainer = styled.View`
   width: 100%;
@@ -13,10 +17,18 @@ export const CardContainer = styled.View`
   align-items: center;
 `;
 
-export const CardText = styled.Text`
+export const CardText = styled.Text<ICardText>`
   flex: 1;
   flex-wrap: wrap;
   color: ${theme.colors.text};
+  ${(props) =>
+    props.completed
+      ? css`
+          text-decoration: line-through;
+        `
+      : css`
+          text-decoration: none;
+        `}
 `;
 
 export const ButtonsView = styled.View`
