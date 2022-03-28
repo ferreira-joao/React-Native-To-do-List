@@ -16,6 +16,10 @@ interface IList {
   completed: boolean;
 }
 
+interface IId {
+  id: number;
+}
+
 function Home() {
   const segmentValues = ["All", "Complete", "Incomplete"];
 
@@ -55,6 +59,21 @@ function Home() {
     }
   }
 
+  function handleComplete({ id }: IId) {
+    setMainList(
+      mainList.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            completed: !item.completed,
+          };
+        }
+        return item;
+      })
+    );
+    console.log(id);
+  }
+
   useEffect(() => {
     handleSegmentedChange();
   }, [segmentedStatus, mainList]);
@@ -89,7 +108,11 @@ function Home() {
 
       <CardList>
         {filteredList.map((item) => (
-          <MainCard key={item.id} text={item.text} />
+          <MainCard
+            key={item.id}
+            text={item.text}
+            onAdd={() => handleComplete(item.id)}
+          />
         ))}
       </CardList>
     </Container>

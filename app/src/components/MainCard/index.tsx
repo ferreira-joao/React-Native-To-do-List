@@ -5,15 +5,16 @@ import { CardContainer, CardText, ButtonsView } from "./styles";
 
 interface ICardText {
   text: string;
+  onAdd: () => void;
 }
 
-export function MainCard({ text }: ICardText) {
+export function MainCard({ text, onAdd }: ICardText) {
   return (
     <CardContainer>
       <CardText numberOfLines={1}>{text}</CardText>
 
       <ButtonsView>
-        <ActionButton icon="checkmark-outline" />
+        <ActionButton icon="checkmark-outline" onPress={onAdd} />
 
         <ActionButton icon="trash-outline" isCancelable leftSpace />
       </ButtonsView>
