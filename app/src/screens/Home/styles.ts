@@ -25,3 +25,10 @@ export const CardList = styled.View`
   width: 100%;
   margin-top: 10px;
 `;
+
+export const EmptyText = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: ${theme.colors.text};
+  text-align: center;
+`;

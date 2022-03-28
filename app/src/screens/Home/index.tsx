@@ -7,7 +7,7 @@ import SegmentedControl from "@react-native-segmented-control/segmented-control"
 
 import theme from "../../global/theme";
 
-import { Container, Title, FormContainer, CardList } from "./styles";
+import { Container, Title, FormContainer, CardList, EmptyText } from "./styles";
 import { Alert } from "react-native";
 
 interface IList {
@@ -110,15 +110,19 @@ function Home() {
       />
 
       <CardList>
-        {filteredList.map((item) => (
-          <MainCard
-            key={item.id}
-            completed={item.completed}
-            text={item.text}
-            onComplete={() => handleComplete(item)}
-            onDelete={() => handleDelete(item)}
-          />
-        ))}
+        {filteredList.length !== 0 ? (
+          filteredList.map((item) => (
+            <MainCard
+              key={item.id}
+              completed={item.completed}
+              text={item.text}
+              onComplete={() => handleComplete(item)}
+              onDelete={() => handleDelete(item)}
+            />
+          ))
+        ) : (
+          <EmptyText>-NO TASKS-</EmptyText>
+        )}
       </CardList>
     </Container>
   );
