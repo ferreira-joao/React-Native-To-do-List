@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MainInput } from "../../components/MainInput";
 import { AddButton } from "../../components/AddButton";
 import { MainCard } from "../../components/MainCard";
@@ -8,7 +10,6 @@ import SegmentedControl from "@react-native-segmented-control/segmented-control"
 import theme from "../../global/theme";
 
 import { Container, Title, FormContainer, CardList, EmptyText } from "./styles";
-import { Alert } from "react-native";
 
 interface IList {
   id: number;
@@ -77,9 +78,33 @@ function Home() {
     setMainList(mainList.filter((item) => item.id !== id));
   }
 
+  const getStorage = async () => {
+    try {
+      let jsonValue = await AsyncStorage.getItem("list");
+
+      if (!jsonValue) {
+        AsyncStorage.setItem("list", JSON.stringify(mainList));
+      } else {
+        let storage = jsonValue && JSON.parse(jsonValue);
+
+        setMainList(storage);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getStorage();
+  }, []);
+
   useEffect(() => {
     handleSegmentedChange();
   }, [segmentedStatus, mainList]);
+
+  useEffect(() => {
+    AsyncStorage.setItem("list", JSON.stringify(mainList));
+  }, [mainList]);
 
   return (
     <Container>
