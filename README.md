@@ -1,5 +1,5 @@
 # React Native To Do List
-Simple To do List developed with React Native and TypeScript for practice purposes
+Simple To do List developed with React Native and TypeScript for practice purposes. The tasks are saved in the device storage so when the app is closed they aren't lost. You can delete and filter tasks by it's status.
 
 ## How to use
 Clone the project's repository:
